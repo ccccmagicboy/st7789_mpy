@@ -713,8 +713,8 @@ mp_obj_t st7789_ST7789_make_new(const mp_obj_type_t *type,
     self->height = args[ARG_height].u_int;
     self->rotation = args[ARG_rotation].u_int % 4;
 
-    if (self->display_height != 240 || (self->display_width != 240  && self->display_width != 135)) {
-        mp_raise_ValueError("Unsupported display. Only 240x240 and 135x240 are supported");
+    if ((self->display_height != 240 && self->display_height != 320) || (self->display_width != 240  && self->display_width != 135)) {
+        mp_raise_ValueError("Unsupported display. Only 240x240 and 135x240 and 240x320 are supported");
     }
 
     if (args[ARG_reset].u_obj == MP_OBJ_NULL
